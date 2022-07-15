@@ -1,4 +1,4 @@
-# workout_tracker
+# Workout Tracker built using Vue 3 and Supabase
 
 ## Project setup
 ```
