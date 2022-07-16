@@ -224,7 +224,7 @@ export default {
 				const { error } = await supabase
 					.from("workouts")
 					.update({
-						workout_name: data.value.workoutName,
+						workout_name: data.value.workout_name,
 						exercises: data.value.exercises,
 					})
 					.eq("id", currentId);

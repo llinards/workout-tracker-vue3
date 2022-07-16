@@ -33,7 +33,7 @@ export default {
 		// Logout function
 		const logout = async () => {
 			await supabase.auth.signOut();
-			router.push({ name: "Home" });
+			router.push({ name: "Login" });
 		};
 
 		return { logout, user };
