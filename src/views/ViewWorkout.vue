@@ -144,8 +144,13 @@ export default {
 				const { data: workouts, error } = await supabase
 					.from("workouts")
 					.select("*")
-					.eq("id", currentId);
+					.eq("id", currentId)
+					.eq("user_id", user.value.id);
 				if (error) throw error;
+				if (!workouts.length) {
+					errorMsg.value = "Not found!";
+					return;
+				}
 				data.value = workouts[0];
 				dataLoaded.value = true;
 			} catch (error) {
@@ -165,7 +170,8 @@ export default {
 					const { error } = await supabase
 						.from("workouts")
 						.delete()
-						.eq("id", currentId);
+						.eq("id", currentId)
+						.eq("user_id", user.value.id);
 					if (error) throw error;
 					router.push({ name: "Home" });
 				} catch (error) {
@@ -227,7 +233,8 @@ export default {
 						workout_name: data.value.workout_name,
 						exercises: data.value.exercises,
 					})
-					.eq("id", currentId);
+					.eq("id", currentId)
+					.eq("user_id", user.value.id);
 				if (error) throw error;
 				edit.value = false;
 				statusMsg.value = "Workout updated!";

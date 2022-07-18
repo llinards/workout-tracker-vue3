@@ -83,9 +83,10 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { uid } from "uid";
 import { supabase } from "../supabase/init";
+import store from "../store/index";
 export default {
 	name: "create",
 	setup() {
@@ -95,6 +96,8 @@ export default {
 		const exercises = ref([1]);
 		const statusMsg = ref(null);
 		const errorMsg = ref(null);
+		const currentUser = computed(() => store.state.user);
+
 		// Add exercise
 
 		const addExercise = () => {
@@ -144,6 +147,7 @@ export default {
 						workout_name: workoutName.value,
 						workout_type: workoutType.value,
 						exercises: exercises.value,
+						user_id: currentUser.value.id,
 					},
 				]);
 				if (error) throw error;
@@ -162,7 +166,7 @@ export default {
 			}
 		};
 
-		return { workoutName, workoutType, exercises, statusMsg, errorMsg, addExercise, workoutChange, deleteExercise, createWorkout };
+		return { workoutName, workoutType, exercises, statusMsg, errorMsg, addExercise, workoutChange, deleteExercise, createWorkout, currentUser };
 	},
 };
 </script>

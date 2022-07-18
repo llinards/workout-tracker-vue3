@@ -24,8 +24,9 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { supabase } from "../supabase/init";
+import store from "../store/index";
 export default {
 	name: "Home",
 	components: {},
@@ -33,11 +34,15 @@ export default {
 		// Create data / vars
 		const data = ref([]);
 		const dataLoaded = ref(null);
+		const currentUser = computed(() => store.state.user);
 
 		// Get data
 		const getData = async () => {
 			try {
-				const { data: workouts, error } = await supabase.from("workouts").select("*");
+				const { data: workouts, error } = await supabase
+					.from("workouts")
+					.select("*")
+					.eq("user_id", currentUser.value.id);
 				if (error) throw error;
 				data.value = workouts;
 				dataLoaded.value = true;
@@ -50,7 +55,7 @@ export default {
 		// Run data function
 		getData();
 
-		return { data, dataLoaded };
+		return { data, dataLoaded, currentUser };
 	},
 };
 </script>
