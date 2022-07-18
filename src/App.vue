@@ -7,7 +7,7 @@
 
 <script>
 import Navigation from "./components/Navigation.vue";
-import { ref } from "vue";
+import { ref, provide } from "vue";
 import { supabase } from "./supabase/init";
 import store from "./store/index";
 export default {
@@ -15,6 +15,7 @@ export default {
 		Navigation,
 	},
 	setup() {
+		provide('store', store);
 		// Create data / vars
 		const appReady = ref(null);
 

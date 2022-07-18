@@ -24,14 +24,14 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 import { supabase } from "../supabase/init";
-import store from "../store/index";
 export default {
 	name: "Home",
 	components: {},
 	setup() {
 		// Create data / vars
+		const store = inject("store");
 		const data = ref([]);
 		const dataLoaded = ref(null);
 		const currentUser = computed(() => store.state.user);

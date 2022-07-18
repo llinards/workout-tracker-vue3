@@ -118,15 +118,15 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 import { supabase } from "../supabase/init";
 import { useRoute, useRouter } from "vue-router";
-import store from "../store/index";
 import { uid } from "uid";
 export default {
 	name: "view-workout",
 	setup() {
 		// Create data / vars
+		const store = inject('store');
 		const data = ref(null);
 		const dataLoaded = ref(null);
 		const errorMsg = ref(null);

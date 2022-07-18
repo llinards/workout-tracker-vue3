@@ -83,14 +83,14 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 import { uid } from "uid";
 import { supabase } from "../supabase/init";
-import store from "../store/index";
 export default {
 	name: "create",
 	setup() {
 		// Create data
+		const store = inject('store');
 		const workoutName = ref("");
 		const workoutType = ref("select-workout");
 		const exercises = ref([1]);

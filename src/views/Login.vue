@@ -9,11 +9,11 @@
 			<h1 class="text-3xl text-at-light-green mb-4">Login</h1>
 			<div class="flex flex-col mb-2">
 				<label for="email" class="mb-1 text-sm text-at-light-green">E-mail</label>
-				<input type="email" v-model="email" required name="" id="email" class="p-2 text-grey-500 focus:outline-none" />
+				<input type="email" v-model="email" name="" id="email" class="p-2 text-grey-500 focus:outline-none" />
 			</div>
 			<div class="flex flex-col mb-2">
 				<label for="password" class="mb-1 text-sm text-at-light-green">Password</label>
-				<input type="password" v-model="password" required name="" id="password" class="p-2 text-grey-500 focus:outline-none" />
+				<input type="password" v-model="password" name="" id="password" class="p-2 text-grey-500 focus:outline-none" />
 			</div>
 			<button type="submit" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-at-light-green duration-200 border-solid border-2 border-transparent hover:border-at-light-green hover:bg-white hover:text-at-light-green">Login</button>
 			<router-link class="text-sm mt-6 text-center" :to="{ name: 'Register' }">Don't have an account? <span class="text-at-light-green">Register</span></router-link>
