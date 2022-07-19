@@ -36,7 +36,7 @@
 			<div class="mt-10 p-8 rounded-md flex flex-col item-center bg-light grey shadow-md">
 				<!-- Strength Trainig -->
 				<div v-if="data.workout_type === 'strength'" class="flex flex-col gap-y-4 w-full">
-					<div class="flex flex-col gap-x-6 gap-y-2 relative sm:flex-row" v-for="(item, index) in data.exercises" :key="index">
+					<div class="flex flex-row gap-x-6 gap-y-2 relative" v-for="(item, index) in data.exercises" :key="index">
 						<div class="flex flex-2 flex-col md:w-1/3">
 							<label id="exercise-name" for="exercise-name" class="mb-1 text-sm text-at-light-green">
 								Exercise
@@ -71,7 +71,7 @@
 				</div>
 				<!-- Cardio Trainig -->
 				<div v-else class="flex flex-col gap-y-4 w-full">
-					<div class="flex flex-col gap-x-6 gap-y-2 relative sm:flex-row" v-for="(item, index) in data.exercises" :key="index">
+					<div class="flex flex-row gap-x-6 gap-y-2 relative" v-for="(item, index) in data.exercises" :key="index">
 						<div class="flex flex-2 flex-col md:w-1/3">
 							<label id="cardio-type" for="cardio-type" class="mb-1 text-sm text-at-light-green">
 								Type
