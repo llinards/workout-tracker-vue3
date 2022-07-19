@@ -1,5 +1,6 @@
 <template>
 	<div class="max-w-screen-sm mx-auto px-4 py-10">
+		<Loading class="loading-icon" v-model:active="isLoading" />
 		<!-- App Message -->
 		<div v-if="statusMsg || errorMsg" class="mb-10 p-4 rounded-md shadow-md bg-light-grey">
 			<p class="text-at-light-green">
@@ -9,7 +10,7 @@
 				{{ errorMsg }}
 			</p>
 		</div>
-		<div v-if="dataLoaded">
+		<div v-if="!isLoading">
 			<!-- Workout Info -->
 			<div class="flex flex-col items-center p-8 rounded-md shadow-md bg-light-grey relative">
 				<div v-if="user" class="flex absolute left-2 top-2 gap-x-2">
@@ -126,20 +127,21 @@ export default {
 	name: "view-workout",
 	setup() {
 		// Create data / vars
-		const store = inject('store');
+		const store = inject("store");
 		const data = ref(null);
-		const dataLoaded = ref(null);
 		const errorMsg = ref(null);
 		const statusMsg = ref(null);
 		const route = useRoute();
 		const router = useRouter();
 		const user = computed(() => store.state.user);
+		const isLoading = ref(false);
 
 		// Get current Id of route
 		const currentId = route.params.workoutId;
 
 		// Get workout data
 		const getData = async () => {
+			isLoading.value = true;
 			try {
 				const { data: workouts, error } = await supabase
 					.from("workouts")
@@ -152,13 +154,13 @@ export default {
 					return;
 				}
 				data.value = workouts[0];
-				dataLoaded.value = true;
 			} catch (error) {
 				errorMsg.value = error.message;
 				setTimeout(() => {
 					errorMsg.value = false;
 				}, 5000);
 			}
+			isLoading.value = false;
 		};
 		getData();
 
@@ -166,6 +168,7 @@ export default {
 		const deleteWorkout = async () => {
 			const confirmToDelete = confirm("Are you sure?");
 			if (confirmToDelete) {
+				isLoading.value = true;
 				try {
 					const { error } = await supabase
 						.from("workouts")
@@ -180,6 +183,7 @@ export default {
 						errorMsg.value = false;
 					}, 5000);
 				}
+				isLoading.value = false;
 			}
 			return;
 		};
@@ -226,6 +230,7 @@ export default {
 
 		// Update Workout
 		const update = async () => {
+			isLoading.value = true;
 			try {
 				const { error } = await supabase
 					.from("workouts")
@@ -247,9 +252,10 @@ export default {
 					errorMsg.value = false;
 				}, 5000);
 			}
+			isLoading.value = false;
 		};
 
-		return { statusMsg, data, dataLoaded, errorMsg, edit, editMode, user, deleteWorkout, addExercise, deleteExercise, update };
+		return { statusMsg, data, errorMsg, edit, editMode, user, deleteWorkout, addExercise, deleteExercise, update, isLoading };
 	},
 };
 </script>

@@ -1,5 +1,6 @@
 <template>
 	<header class="bg-at-light-green text-white">
+		<Loading class="loading-icon" v-model:active="isLoading" />
 		<nav class="container py-5 px-4 flex flex-col gap-4 items-center sm:flex-row">
 			<div>
 				<router-link class="cursor-pointer flex items-center gap-x-4" :to="{ name: 'Home' }">
@@ -19,7 +20,7 @@
 
 <script>
 import store from "../store/index";
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { supabase } from "../supabase/init";
 import { useRouter } from "vue-router";
 export default {
@@ -30,13 +31,18 @@ export default {
 		// Setup ref to router
 		const router = useRouter();
 
+		const isLoading = ref(false);
+
 		// Logout function
 		const logout = async () => {
+			//needs to be updated
+			isLoading.value = true;
 			await supabase.auth.signOut();
 			router.push({ name: "Login" });
+			isLoading.value = false;
 		};
 
-		return { logout, user };
+		return { logout, user, isLoading };
 	},
 };
 </script>
