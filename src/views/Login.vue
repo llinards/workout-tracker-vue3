@@ -60,6 +60,10 @@ export default {
 			isLoading.value = false;
 		};
 
+		if (store.state.user) {
+			router.push({ name: "Home" });
+		}
+
 		return { email, password, errorMsg, login, store, isLoading };
 	},
 };
