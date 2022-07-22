@@ -45,7 +45,8 @@ export default {
 				const { data: workouts, error } = await supabase
 					.from("workouts")
 					.select("*")
-					.eq("user_id", currentUser.value.id);
+					.eq("user_id", currentUser.value.id)
+					.order("id", { ascending: true });
 				if (error) throw error;
 				data.value = workouts;
 			} catch (error) {
