@@ -49,21 +49,21 @@
 							<label id="sets" for="sets" class="mb-1 text-sm text-at-light-green">
 								Sets
 							</label>
-							<input v-if="edit" id="sets" type="text" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.sets" />
+							<input v-if="edit" id="sets" type="number" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.sets" />
 							<p v-else>{{ item.sets }}</p>
 						</div>
 						<div class="flex flex-1 flex-col">
 							<label id="reps" for="reps" class="mb-1 text-sm text-at-light-green">
 								Reps
 							</label>
-							<input v-if="edit" id="reps" type="text" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.reps" />
+							<input v-if="edit" id="reps" type="number" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.reps" />
 							<p v-else>{{ item.reps }}</p>
 						</div>
 						<div class="flex flex-1 flex-col">
 							<label id="weight" for="weight" class="mb-1 text-sm text-at-light-green">
 								Weight (kg's)
 							</label>
-							<input v-if="edit" id="weight" type="text" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.weight" />
+							<input v-if="edit" id="weight" type="number" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.weight" />
 							<p v-else>{{ item.weight }}</p>
 						</div>
 						<img @click="deleteExercise(item.id)" v-if="edit" class="absolute h-4 w-auto -left-5 cursor-pointer" src="@/assets/images/trash-light-green.png" alt="" />
@@ -90,21 +90,21 @@
 								Distance
 							</label>
 							<!-- fix why box does not change the styling -->
-							<input v-if="edit" id="distance" type="text" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.distance" />
+							<input v-if="edit" id="distance" type="number" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.distance" />
 							<p v-else>{{ item.distance }}</p>
 						</div>
 						<div class="flex flex-1 flex-col">
 							<label id="duration" for="duration" class="mb-1 text-sm text-at-light-green">
 								Duration
 							</label>
-							<input v-if="edit" id="duration" type="text" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.duration" />
+							<input v-if="edit" id="duration" type="number" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.duration" />
 							<p v-else>{{ item.duration }}</p>
 						</div>
 						<div class="flex flex-1 flex-col">
 							<label id="pace" for="pace" class="mb-1 text-sm text-at-light-green">
 								Pace
 							</label>
-							<input v-if="edit" id="pace" type="text" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.pace" />
+							<input v-if="edit" id="pace" type="number" class="p-2 w-full text-gray-500 focus:outline-none" v-model="item.pace" />
 							<p v-else>{{ item.pace }}</p>
 						</div>
 						<img @click="deleteExercise(item.id)" v-if="edit" class="absolute h-4 w-auto -left-5 cursor-pointer" src="@/assets/images/trash-light-green.png" alt="" />

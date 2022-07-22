@@ -10,7 +10,7 @@
 		<div v-if="!isLoading">
 			<div class="p-8 flex items-start bg-light-grey rounded-md shadow-lg">
 				<!-- Form -->
-				<form @submit.prevent="createWorkout" class="flex flex-col gap-y-5 w-full">
+				<form @submit.prevent="createWorkout" id="create-workout" class="flex flex-col gap-y-5 w-full">
 					<h1 class="text-2xl text-at-light-green">Record Workout</h1>
 					<!-- Workout Name -->
 					<div class="flex flex-col">
@@ -35,15 +35,15 @@
 							</div>
 							<div class="flex flex-col flex-1">
 								<label for="sets" class="mb-1 text-sm text-at-light-green">Sets</label>
-								<input type="text" v-model="item.sets" required class="p-2 w-full text-gray-500 focus:outline-none" />
+								<input type="number" v-model="item.sets" required class="p-2 w-full text-gray-500 focus:outline-none" />
 							</div>
 							<div class="flex flex-col flex-1">
 								<label for="reps" class="mb-1 text-sm text-at-light-green">Reps</label>
-								<input type="text" v-model="item.reps" required class="p-2 w-full text-gray-500 focus:outline-none" />
+								<input type="number" v-model="item.reps" required class="p-2 w-full text-gray-500 focus:outline-none" />
 							</div>
 							<div class="flex flex-col flex-1">
 								<label for="weight" class="mb-1 text-sm text-at-light-green">Weight (kg's)</label>
-								<input type="text" v-model="item.weight" required class="p-2 w-full text-gray-500 focus:outline-none" />
+								<input type="number" v-model="item.weight" required class="p-2 w-full text-gray-500 focus:outline-none" />
 							</div>
 							<img @click="deleteExercise(item.id)" src="@/assets/images/trash-light-green.png" class="h-4 w-auto absolute -left-5 cursor-pointer" alt="" />
 						</div>
@@ -63,24 +63,24 @@
 							</div>
 							<div class="flex flex-col flex-1">
 								<label for="distance" class="mb-1 text-sm text-at-light-green">Distance</label>
-								<input type="text" v-model="item.distance" required class="p-2 w-full text-gray-500 focus:outline-none" />
+								<input type="number" v-model="item.distance" required class="p-2 w-full text-gray-500 focus:outline-none" />
 							</div>
 							<div class="flex flex-col flex-1">
 								<label for="duration" class="mb-1 text-sm text-at-light-green">Duration</label>
-								<input type="text" v-model="item.duration" required class="p-2 w-full text-gray-500 focus:outline-none" />
+								<input type="number" v-model="item.duration" required class="p-2 w-full text-gray-500 focus:outline-none" />
 							</div>
 							<!-- add calculation for pace auto -->
 							<div class="flex flex-col flex-1">
 								<label for="pace" class="mb-1 text-sm text-at-light-green">Pace</label>
-								<input type="text" v-model="item.pace" required class="p-2 w-full text-gray-500 focus:outline-none" />
+								<input type="number" v-model="item.pace" required class="p-2 w-full text-gray-500 focus:outline-none" />
 							</div>
 							<img @click="deleteExercise(item.id)" src="@/assets/images/trash-light-green.png" class="h-4 w-auto absolute -left-5 cursor-pointer" alt="" />
 						</div>
 						<button @click="addExercise" type="button" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-at-light-green duration-200 border-solid border-2 border-transparent hover:border-at-light-green hover:bg-white hover:text-at-light-green">Add Exercise</button>
 					</div>
-					<button type="submit" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-at-light-green duration-200 border-solid border-2 border-transparent hover:border-at-light-green hover:bg-white hover:text-at-light-green">Add Workout</button>
 				</form>
 			</div>
+			<button type="submit" form="create-workout" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-at-light-green duration-200 border-solid border-2 border-transparent hover:border-at-light-green hover:bg-white hover:text-at-light-green">Add Workout</button>
 		</div>
 	</div>
 </template>
